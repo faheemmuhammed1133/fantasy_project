@@ -4,7 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { motion } from 'framer-motion';
 
 function Login() {
-  const [formData, setFormData] = useState({
+  const [userCreds, setUserCreds] = useState({
     email: '',
     password: '',
   });
@@ -12,16 +12,39 @@ function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError('');
+
+
+  async function login() {
     try {
-      await login(formData);
-      navigate('/matches');
-    } catch (error) {
-      setError('Invalid email or password');
+      let response = await fetch("http://localhost:8000/auth/login", {
+        method: "POST",
+        body: JSON.stringify(userCreds),
+        headers: { "Content-Type": "application/json" }
+      });
+
+      let data = await response.json()
+
+      if (response.status === 200 & data.token !== undefined) {
+        localStorage.setItem("sayit-info", JSON.stringify(data))
+        navigate("/chat")
+        // console.log("hi")
+      }
     }
-  };
+    catch (err) {
+      setError("User Not Found")
+    }
+  }
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setError('');
+  //   try {
+  //     await login(formData);
+  //     navigate('/matches');
+  //   } catch (error) {
+  //     setError('Invalid email or password');
+  //   }
+  // };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
@@ -34,15 +57,15 @@ function Login() {
           <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
             Sign in to your account
           </h2>
-          <p className="mt-2 text-center text-sm text-gray-400">
+          {/* <p className="mt-2 text-center text-sm text-gray-400">
             Demo Credentials:
             <br />
             Email: demo@example.com
             <br />
             Password: demo123
-          </p>
+          </p> */}
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+        <form className="mt-8 space-y-6" onSubmit={login}>
           {error && (
             <div className="text-red-500 text-center text-sm">{error}</div>
           )}
@@ -53,8 +76,8 @@ function Login() {
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Email address"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                value={userCreds.email}
+                onChange={(e) => setUserCreds({ ...userCreds, email: e.target.value })}
               />
             </div>
             <div>
@@ -63,8 +86,8 @@ function Login() {
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
-                value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                value={userCreds.password}
+                onChange={(e) => setUserCreds({ ...userCreds, password: e.target.value })}
               />
             </div>
           </div>
