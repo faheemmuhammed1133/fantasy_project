@@ -1,61 +1,65 @@
-/* Reset default styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-#root {
-  min-height: 100vh;
+/* Main app container */
+.app-container {
   display: flex;
-  flex-direction: column;
+  height: 80vh;
+  font-family: Arial, sans-serif;
+  background-color: #111827;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* Sidebar always fixed */
+.sidebar {
+  /* position: fixed; */
+  top: 20;
+  left: 10;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* Main content (Content area beside Sidebar) */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #111827;
+  transition: margin-left 0.3s ease; /* Smooth adjustment */
+  overflow-y: auto;
 }
 
-::-webkit-scrollbar-track {
-  @apply bg-gray-800;
+.content h2 {
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  color: #e5e7eb;
 }
 
-::-webkit-scrollbar-thumb {
-  @apply bg-indigo-600 rounded-full;
+.content h3 {
+  margin-top: 20px;
+  font-size: 1.5em;
+  color: #9f9797;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-indigo-700;
+.matches {
+  background-color: #4A4E69;
+  margin: 8px 0;
+  padding: 10px;
+  /* border: 1px solid #ddd; */
+  border-radius: 4px;
+  color: #e5e7eb;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.matches:hover{
+  background-color: #455839;
 }
 
-/* Transitions */
-.page-transition {
-  @apply transition-all duration-300 ease-in-out;
+
+.seeContests {
+  color: #e5e7eb;
+  padding: 10px;
+  width: 100px;
+  border-radius: 5px;
+  background-color: #148510;
+  border:none;
 }
 
-/* Layout utilities */
-.flex-center {
-  @apply flex items-center justify-center;
-}
-
-.grid-responsive {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
-}
-
-/* Typography */
-.heading-primary {
-  @apply text-4xl font-bold text-white mb-4;
-}
-
-.heading-secondary {
-  @apply text-2xl font-semibold text-white mb-3;
-}
-
-.text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400;
+.seeContests:hover{
+  color: #148510;
+  background-color: #e5e7eb;
 }

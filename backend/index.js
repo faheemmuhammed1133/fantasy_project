@@ -1,17 +1,23 @@
-import  express  from "express";
-import connectDB from "./dbConnection.js";
-import cors from "cors"
+import express from 'express';
+import bodyParser from 'body-parser';
+import connectDB from './dbconnection.js';
 
-connectDB()
-const app =express();
+// Import routes
+import userRoutes from './routes/userRoutes.js';
 
-app.use(cors())
+const app = express();
+const PORT = process.env.PORT || 5000;
 
-//inbuilt middlewares
-app.use(express.json())
+// Connect to MongoDB
+connectDB();
 
+// Middleware
+app.use(bodyParser.json());
 
+// Routes
+app.use('/api/users', userRoutes);
 
-app.listen(8000,()=>{
-   console.log("server up running at port 8000")
-})
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});

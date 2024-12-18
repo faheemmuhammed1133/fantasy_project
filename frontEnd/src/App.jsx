@@ -1,37 +1,42 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/layout/Navbar';
-import Home from './pages/Home';
-import Login from './pages/auth/Login';
-import Register from './pages/auth/Register';
-import Matches from './pages/matches/Matches';
-import Contests from './pages/contests/Contests';
-import PlayerSelection from './pages/contests/PlayerSelection';
-import Profile from './pages/profile/Profile';
-import Wallet from './pages/wallet/Wallet';
-import { AuthProvider } from './context/AuthContext';
-import PrivateRoute from './components/auth/PrivateRoute';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Header from "./components/Header.jsx";
+import Sidebar from "./components/Sidebar.jsx";
+import Football from "./pages/Football.jsx";
+import Cricket from "./pages/Cricket.jsx";
+import NBA from "./pages/NBA.jsx";
+import "./App.css";
+import Login from "./pages/auth/Login.jsx";
+import { AuthProvider } from './contexts/AuthContext.jsx';
+import Register from "./pages/auth/Register.jsx";
+import Wallet from "./components/Wallet.jsx";
 
-function App() {
+const App = () => {
   return (
     <AuthProvider>
       <Router>
-        <div className="min-h-screen bg-gray-900">
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/matches" element={<PrivateRoute><Matches /></PrivateRoute>} />
-            <Route path="/contests/:matchId" element={<PrivateRoute><Contests /></PrivateRoute>} />
-            <Route path="/player-selection/:contestId" element={<PrivateRoute><PlayerSelection /></PrivateRoute>} />
-            <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
-            <Route path="/wallet" element={<PrivateRoute><Wallet /></PrivateRoute>} />
-          </Routes>
+        <Header />
+        <div className="app-container">
+          <div className="sidebar">
+            <Sidebar />
+          </div>
+          <div className="main-content">
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/wallet" element={<Wallet />} />
+              {/* <Route path="/profile" element={<Wallet />} /> */}
+              <Route path="/" element={<Football />} />
+              <Route path="/football" element={<Football />} />
+              <Route path="/cricket" element={<Cricket />} />
+              <Route path="/nba" element={<NBA />} />
+              <Route path="/football/:match" element={<Football />} />
+            </Routes>
+          </div>
         </div>
       </Router>
     </AuthProvider>
   );
-}
+};
 
 export default App;

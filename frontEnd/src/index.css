@@ -1,95 +1,45 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 180px;
+  }
 
-:root {
-  --primary: #4f46e5;
-  --primary-dark: #4338ca;
-  --secondary: #10b981;
-  --secondary-dark: #059669;
+  .header h2 {
+    font-size: 1.5em;
+  }
+
+  .header nav a {
+    margin: 0 10px;
+    font-size: 1em;
+  }
+
+  .content {
+    padding: 15px;
+  }
 }
 
-body {
-  @apply bg-gray-900 text-white;
+@media (max-width: 768px) {
+  .sidebar {
+    display: none; /* Hide sidebar on smaller screens */
+  }
+
+  .header nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-icons {
+    gap: 10px;
+  }
+
+  .content {
+    font-size: 1em;
+  }
+}
+
+*{
+  padding: 0;
   margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
 }
 
-/* Custom animations */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Custom button styles */
-.btn-primary {
-  @apply bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 
-         transition-all duration-300 ease-in-out transform hover:scale-105;
-}
-
-.btn-secondary {
-  @apply bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 
-         transition-all duration-300 ease-in-out transform hover:scale-105;
-}
-
-/* Card styles */
-.card {
-  @apply bg-gray-800 rounded-lg shadow-xl p-6 
-         transition-all duration-300 ease-in-out hover:shadow-2xl;
-}
-
-/* Input styles */
-.input-primary {
-  @apply appearance-none rounded-md relative block w-full px-3 py-2 
-         border border-gray-700 placeholder-gray-400 text-white 
-         bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 
-         focus:border-transparent transition-all duration-200;
-}
-
-/* Navigation styles */
-.nav-link {
-  @apply text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium
-         transition-all duration-200 hover:bg-gray-800;
-}
-
-.nav-link-active {
-  @apply bg-gray-800 text-white;
-}
-
-/* Container styles */
-.container-custom {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-}
-
-/* Gradient backgrounds */
-.bg-gradient-primary {
-  @apply bg-gradient-to-r from-indigo-600 to-purple-600;
-}
-
-.bg-gradient-secondary {
-  @apply bg-gradient-to-r from-green-600 to-teal-600;
-}
-
-/* Loading animation */
-.loading-spinner {
-  @apply animate-spin h-5 w-5 text-white;
-}
-
-/* Toast notifications */
-.toast {
-  @apply fixed bottom-4 right-4 px-6 py-3 rounded-lg shadow-lg 
-         transform transition-all duration-300 ease-out;
-}
-
-.toast-success {
-  @apply bg-green-600 text-white;
-}
-
-.toast-error {
-  @apply bg-red-600 text-white;
-}
