@@ -7,7 +7,7 @@ const playerSchema = new mongoose.Schema({
   pic: { type: String },
   pointsInMatch: { type: Number, default: 0 },
   points: [{ matchId: mongoose.Schema.Types.ObjectId, points: Number }],
-});
+},{timestamps:true});
 
 const Player = mongoose.model('players', playerSchema);
 export default Player
