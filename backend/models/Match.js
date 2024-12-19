@@ -10,7 +10,7 @@ const matchSchema = new mongoose.Schema({
   sport: { type: String, enum: ['cricket', 'football', 'nba'], required: true },
   date: { type: Date, required: true },
   status: { type: String, enum: ['live', 'upcoming', 'past'], default: 'upcoming' },
-});
+},{timestamps:true});
 
 const Match  = mongoose.model('matches', matchSchema);
 export default Match
