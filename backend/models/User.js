@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   favPlayers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'players' }],
   transactions: [{ type: Number }],
   balance: { type: Number, default: 0 },
-});
+},{timestamps:true});
 
 const User = mongoose.model('users', userSchema);
 export default  User
