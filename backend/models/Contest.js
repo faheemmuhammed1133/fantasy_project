@@ -11,7 +11,7 @@ const contestSchema = new mongoose.Schema({
       points: { type: Number, default: 0 },
     },
   ],
-});
+},{timestamps:true});
 
 const Contest = mongoose.model('contests', contestSchema);
 export default Contest
