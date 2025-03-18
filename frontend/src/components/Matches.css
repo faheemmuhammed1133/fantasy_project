@@ -1,0 +1,81 @@
+/* Matches.css */
+
+/* Container for the matches section */
+.past-matches-section,
+.upcoming-matches-section,
+.live-matches-section {
+   padding: 20px;
+}
+
+/* Container to hold all match items in a scrollable row */
+.matches-container {
+   display: flex;
+   overflow-x: auto; /* Enables horizontal scrolling */
+   gap: 20px;
+   padding-bottom: 10px;
+   scroll-snap-type: x mandatory; /* Snap to the next item on scroll */
+}
+
+/* Individual match item style */
+.match-item {
+   background-color: #4A4E69;
+   padding: 10px;
+   color: #e5e7eb;
+   border-radius: 8px;
+   min-width: 400px; /* Minimum width of each item */
+   text-align: center;
+   box-sizing: border-box;
+   display: flex;
+   flex-direction: column; /* Stack content vertically */
+   justify-content: space-between; /* Space between name and button */
+   height: 200px; /* Fixed height for consistency */
+   scroll-snap-align: start; /* Snap each match to the start */
+   transition: transform 0.3s ease;
+}
+
+/* Match item hover effect */
+.match-item:hover {
+   background-color: #455839; /* Hover background color */
+}
+.match-item h1{
+  padding: 40px;
+}
+
+/* Button style for contests */
+.seeContests {
+   margin-top: auto; /* Push button to the lowest position */
+   background-color: #007BFF;
+   color: white;
+   border: none;
+   padding: 8px 16px;
+   border-radius: 4px;
+   cursor: pointer;
+   width:60%;
+   align-self: center;
+}
+
+/* Match link style */
+.match-link {
+   text-decoration: none;
+}
+
+/* Responsiveness: Adjust for smaller screens */
+@media (max-width: 768px) {
+   .matches-container {
+     gap: 10px;
+   }
+
+   .match-item {
+     min-width: 200px;
+   }
+}
+
+/* Hide the scrollbar but still keep it functional */
+.matches-container::-webkit-scrollbar {
+   display: none;
+}
+
+.matches-container {
+   -ms-overflow-style: none;
+   scrollbar-width: none;
+}

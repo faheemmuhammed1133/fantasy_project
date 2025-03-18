@@ -1,0 +1,54 @@
+.profile {
+   background-color: #1f2937;
+   padding: 20px;
+   border-radius: 8px;
+   width: 80%;
+   max-width: 800px;
+   margin: 20px auto;
+   color: white;
+ }
+ 
+ .user-info {
+   margin-top: 20px;
+ }
+ 
+ .user-info p {
+   font-size: 1.2rem;
+   margin-bottom: 10px;
+ }
+ 
+ .user-info p strong {
+   color: #4f46e5;
+ }
+ 
+ .user-info ul {
+   list-style-type: none;
+   padding-left: 0;
+ }
+ 
+ .user-info ul li {
+   margin-bottom: 8px;
+ }
+ 
+ strong {
+   color: #4f46e5;
+ }
+ 
+ .transactions ul li {
+   margin-bottom: 8px;
+ }
+ 
+ button {
+   background-color: #6366f1;
+   color: white;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   margin-top: 20px;
+ }
+ 
+ button:hover {
+   background-color: #4f46e5;
+ }
+ 
